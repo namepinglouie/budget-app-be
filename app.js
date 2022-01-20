@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the transactions app");
+    res.send("Welcome to the Transactions App");
 });
 
 app.use("/transactions", transactionsController);
