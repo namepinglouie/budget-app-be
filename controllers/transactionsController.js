@@ -2,13 +2,12 @@ const express = require("express");
 const transactionRoutes = express.Router();
 const transactionsArr = require("../models/data.js");
 
-const {index} = req.params;
-
 transactionRoutes.get("/", (req, res) => {
     res.json(transactionsArr);
 });
 
 transactionRoutes.get("/:index", (req, res) => {
+    const {index} = req.params;
     if(transactionsArr[index]) res.json(transactionsArr[index]);
     else res.status(404).json({error: "Not Found"});
 });
@@ -19,6 +18,7 @@ transactionRoutes.post("/", (req, res) => {
 });
 
 transactionRoutes.delete("/:index", (req, res) => {
+    const {index} = req.params;
     if(transactionsArr[index]) {
         let remove = transactionsArr.splice(index, 1);
         res.json(remove[0]);
@@ -27,7 +27,8 @@ transactionRoutes.delete("/:index", (req, res) => {
     }
 });
 
-transactionsArr.put("/:index", (req, res) => {
+transactionRoutes.put("/:index", (req, res) => {
+    const {index} = req.params;
     if(!transactionsArr[index]) {
         res.stat(404).json({error: "Not Found"});
         return;
