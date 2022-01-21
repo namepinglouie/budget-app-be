@@ -1,7 +1,7 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
 const transactionsController = require("./controllers/transactionsController.js");
+const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
